@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+alerting:
+  alertmanagers:
+
+rule_files:
+
+scrape_configs:
+  - job_name: "Omada"
+    static_configs:
+      - targets: ["10.0.10.11:51772"]
+  - job_name: "Synology"
+    static_configs:
+      - targets: ["10.0.10.11:9116"]
+    metrics_path: /snmp
+    params:
+      module: [synology]
+      auth: [dsm_snmp3]
+      target: ["10.0.10.11"]
