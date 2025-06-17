@@ -1,0 +1,17 @@
+services:
+  Loki:
+    image: grafana/loki:3.5.1
+    container_name: loki
+    user: "1042"
+    environment:
+      TZ: Europe/Warsaw
+    restart: unless-stopped
+    volumes:
+      - ./conf:/etc/loki/conf
+      - ./data:/loki
+    command:
+      - -config.file=/etc/loki/conf/config.yaml
+
+    ports:
+      - "3100:3100"
+    network_mode: host
