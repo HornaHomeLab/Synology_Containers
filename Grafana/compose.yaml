@@ -1,0 +1,18 @@
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:12.0.1
+    restart: unless-stopped
+    user: '1035'
+    environment:
+      TZ: Europe/Warsaw
+      GF_DATE_FORMATS_DEFAULT_TIMEZONE: Europe/Warsaw
+      GF_LOG_LEVEL: warn
+    volumes:
+      - ./conf:/usr/share/grafana/conf:rw
+      - ./data:/var/lib/grafana:rw
+    command:
+      - --config=/usr/share/grafana/conf/custom.ini
+    ports:
+      - 3000:3000
+    network_mode: host
