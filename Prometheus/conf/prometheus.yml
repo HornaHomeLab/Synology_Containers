@@ -11,6 +11,7 @@ scrape_configs:
   - job_name: "Omada"
     static_configs:
       - targets: ["10.0.10.11:51772"]
+
   - job_name: "Synology"
     static_configs:
       - targets: ["10.0.10.11:9116"]
@@ -19,3 +20,16 @@ scrape_configs:
       module: [synology]
       auth: [dsm_snmp3]
       target: ["10.0.10.11"]
+
+  - job_name: "Ohm"
+    static_configs:
+      - targets: ["10.0.10.21:4445"]
+        labels:
+          device_name: "LianLi"
+
+  - job_name: "Vault"
+    static_configs:
+      - targets: ["10.0.10.11:8200"]
+    metrics_path: /v1/sys/metrics
+    params:
+      format: [prometheus]
