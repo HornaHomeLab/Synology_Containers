@@ -17,14 +17,17 @@ services:
             {
               "tcp": {
                 "address": "0.0.0.0:8200",
-                "tls_disable": true
+                "tls_disable": true,
+                "telemetry": {
+                  "unauthenticated_metrics_access": true
+                }
               }
             }
           ],
           "default_lease_ttl": "168h",
           "max_lease_ttl": "7200h",
           "ui": true,
-          "api_addr": "http://localhost:8200"
+          "api_addr": "https://vault.horna.local"
         }
     restart: unless-stopped
     volumes:
