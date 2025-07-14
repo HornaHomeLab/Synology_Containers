@@ -40,5 +40,7 @@ secrets
 *.crt
 *.key
 
-*/data
+**/data
 .DS_Store
+
+**/env
