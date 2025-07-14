@@ -3,11 +3,9 @@ services:
     container_name: grafana
     image: grafana/grafana:12.0.1
     restart: unless-stopped
-    user: '1035'
-    environment:
-      TZ: Europe/Warsaw
-      GF_DATE_FORMATS_DEFAULT_TIMEZONE: Europe/Warsaw
-      GF_LOG_LEVEL: warn
+    user: "1035"
+    env_file:
+      - ./env
     volumes:
       - ./conf:/usr/share/grafana/conf:rw
       - ./data:/var/lib/grafana:rw
