@@ -1,0 +1,9 @@
+services:
+  omada-exporter:
+    container_name: omada-exporter
+    image: docker-hub.horna.local/omada_exporter_go:25.29.0
+    restart: unless-stopped
+    env_file:
+      - ./env
+    ports:
+      - 51772:8080
