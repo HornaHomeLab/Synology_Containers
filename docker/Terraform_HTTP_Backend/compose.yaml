@@ -1,7 +1,8 @@
 services:
   tf-backend:
     container_name: tf-backend
-    image: docker-hub.horna.local/terraform_http_backend:latest
+    image: docker-hub.horna.local/terraform_http_backend:25.29.1
+    restart: unless-stopped
     environment:
       - LOKI_URL=http://10.0.10.11:3100
       - LOG_LEVEL=info
