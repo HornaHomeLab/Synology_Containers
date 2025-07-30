@@ -1,0 +1,13 @@
+services:
+  pve-exporter:
+    image: prompve/prometheus-pve-exporter:3.5.5
+    container_name: pve-exporter
+    restart: unless-stopped
+    volumes:
+      - ./conf:/etc/prometheus:ro
+    env_file:
+      - ./env
+    ports:
+      - 9221:9221
+    
+    
