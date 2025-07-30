@@ -48,3 +48,22 @@ scrape_configs:
     metrics_path: /v1/sys/metrics
     params:
       format: [prometheus]
+
+  - job_name: "pve"
+    static_configs:
+      - targets:
+          - 10.0.10.105 # pve-i5.
+          - 10.0.10.107 # pve-r7.
+    metrics_path: /pve
+    params:
+      module: [default]
+      cluster: ["1"]
+      node: ["1"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 10.0.10.10:9221 # PVE exporter.
+
