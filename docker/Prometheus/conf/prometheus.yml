@@ -20,11 +20,24 @@ scrape_configs:
         labels:
           device_name: "Loki_DS923"
 
+  - job_name: "grafana"
+    static_configs:
+      - targets: ["10.0.10.11:3000"]
+        labels:
+          device_name: "Grafana_DS923"
+
   - job_name: "Omada"
     static_configs:
       - targets: ["10.0.10.11:51772"]
         labels:
           device_name: "Omada_DS923"
+    metrics_path: /metrics
+
+  - job_name: "TF_Backend"
+    static_configs:
+      - targets: ["10.0.10.11:8001"]
+        labels:
+          device_name: "TF_Backend_DS923"
     metrics_path: /metrics
 
   - job_name: "Synology"
